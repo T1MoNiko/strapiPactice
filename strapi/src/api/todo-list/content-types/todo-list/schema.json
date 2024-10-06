@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "todo_lists",
+  "info": {
+    "singularName": "todo-list",
+    "pluralName": "todo-lists",
+    "displayName": "TodoList"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "todos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::todo.todo",
+      "mappedBy": "todo_list"
+    }
+  }
+}

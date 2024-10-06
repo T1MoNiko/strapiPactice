@@ -1,0 +1,35 @@
+
+.todoContainer {
+    background: var(--dark-theme-elem-back);
+    border-radius: 10px;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 23px;
+    padding: 10px 10px 10px 15px;
+    transition: transform .15s ease-in-out;
+    box-shadow: 1px 2px 3px var(--dark-theme-shadow);
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todoDeleteBtn {
+    background: var(--dark-theme-elem-back);
+    border: none;
+}
+
+.trash {
+    width: 35px;
+    height: 35px;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background .3s ease, fill .3s ease;
+}
+
+.trash:hover {
+    background: var(--dark-theme-icons-back);
+    fill: rgb(225, 33, 33);
+}
