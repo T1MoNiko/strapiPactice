@@ -8,8 +8,8 @@ export type TodoList = APIResponse<typeof schemaId>;
 export type TodoLists = APIResponseCollection<typeof schemaId>;
 export type TodoListAttributes = GetValues<typeof schemaId>;
 
-export class TodosApi {
-    private static instance: TodosApi;
+export class TodoListApi {
+    private static instance: TodoListApi;
     private httpInstance: AxiosInstance;
 
     constructor() {
@@ -18,16 +18,16 @@ export class TodosApi {
 
     public static getInstance() {
         if (!this.instance) {
-            this.instance = new TodosApi();
+            this.instance = new TodoListApi();
         }
         return this.instance;
     }
 
-    public async getTodoById(id: number){
-        return (await this.httpInstance.get<TodoList>(`/todo-lists/${id}`)).data;
+    public async getTodoListById(id: number){
+        return (await this.httpInstance.get<TodoList>(`/todo-lists/${id}?populate=todos`)).data;
     }
 
-    public async getTodos() {
+    public async getTodoLists() {
         return (await this.httpInstance.get<TodoLists>('/todo-lists')).data;
     }
 
@@ -35,7 +35,11 @@ export class TodosApi {
         return (await this.httpInstance.delete<TodoList>(`/todo-lists/${id}`)).data
     }
 
-    public async addTodoList(id: number) {
-        return (await this.httpInstance.delete<TodoList>(`/todo-lists/${id}`)).data
+    public async create(data: TodoListAttributes) {
+        return await this.httpInstance.post<TodoList>('/todo-lists', {
+            data: {
+                ...data
+            }
+        })
     }
 }

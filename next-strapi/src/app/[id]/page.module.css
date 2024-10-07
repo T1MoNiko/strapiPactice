@@ -1,0 +1,29 @@
+.container {
+    padding: 0 40px;
+}
+
+.sort {
+    display: block;
+    width: 100%;
+    text-align: end;
+    margin-top: 20px;
+}
+
+.sort > select {
+    padding: 10px 5px;
+    border: none;
+    background-color: var(--dark-theme-elem-back);
+    outline: none;
+    color: var(--foreground)
+}
+
+.todos {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+
+.todosItems {
+    width: 70%;
+}

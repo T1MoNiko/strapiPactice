@@ -31,11 +31,24 @@ export class TodosApi {
         return (await this.httpInstance.get<Todos>('/todos')).data;
     }
 
-    public async getSortTodos() {
-        return (await this.httpInstance.get<Todos>('/todos/filters[is_complite]=true')).data;
-    }
-
     public async deleteTodo(id: number) {
         return (await this.httpInstance.delete<Todo>('/todos/' + id)).data
+    }
+
+    public async create(data: TodoAttributes) {
+        return await this.httpInstance.post<Todo>('/todos', {
+            data: {
+                ...data
+            }
+        })
+    }
+
+    public async update(id:number, data: TodoAttributes) {
+        console.log(data)
+        return await this.httpInstance.put<Todo>(`/todos/${id}`, {
+            data: {
+                ...data
+            }
+        })
     }
 }

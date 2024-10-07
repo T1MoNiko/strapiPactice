@@ -362,72 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiTodoTodo extends Schema.CollectionType {
-  collectionName: 'todos';
-  info: {
-    singularName: 'todo';
-    pluralName: 'todos';
-    displayName: 'Todo';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.Text;
-    is_complite: Attribute.Boolean;
-    todo_list: Attribute.Relation<
-      'api::todo.todo',
-      'manyToOne',
-      'api::todo-list.todo-list'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::todo.todo', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::todo.todo', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTodoListTodoList extends Schema.CollectionType {
-  collectionName: 'todo_lists';
-  info: {
-    singularName: 'todo-list';
-    pluralName: 'todo-lists';
-    displayName: 'TodoList';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String;
-    description: Attribute.String;
-    todos: Attribute.Relation<
-      'api::todo-list.todo-list',
-      'oneToMany',
-      'api::todo.todo'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::todo-list.todo-list',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::todo-list.todo-list',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -854,6 +788,72 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiTodoTodo extends Schema.CollectionType {
+  collectionName: 'todos';
+  info: {
+    singularName: 'todo';
+    pluralName: 'todos';
+    displayName: 'Todo';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    is_complite: Attribute.Boolean;
+    todo_list: Attribute.Relation<
+      'api::todo.todo',
+      'manyToOne',
+      'api::todo-list.todo-list'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::todo.todo', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::todo.todo', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTodoListTodoList extends Schema.CollectionType {
+  collectionName: 'todo_lists';
+  info: {
+    singularName: 'todo-list';
+    pluralName: 'todo-lists';
+    displayName: 'TodoList';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.String;
+    todos: Attribute.Relation<
+      'api::todo-list.todo-list',
+      'oneToMany',
+      'api::todo.todo'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::todo-list.todo-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::todo-list.todo-list',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -864,8 +864,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::todo.todo': ApiTodoTodo;
-      'api::todo-list.todo-list': ApiTodoListTodoList;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -874,6 +872,8 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::todo.todo': ApiTodoTodo;
+      'api::todo-list.todo-list': ApiTodoListTodoList;
     }
   }
 }

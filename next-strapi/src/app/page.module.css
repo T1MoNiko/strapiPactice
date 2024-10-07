@@ -163,3 +163,14 @@ a.secondary {
     filter: invert();
   }
 }
+
+.container {
+  margin-top: 30px;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todoLists {
+  width: 60%;
+}

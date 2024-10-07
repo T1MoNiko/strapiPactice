@@ -1,0 +1,41 @@
+.createIpt {
+    background: #1c1c1c;
+    border-radius: 15px;
+    border: none;
+    padding: 5px 10px;
+    display: block;
+    box-shadow: 1px 1px 3px 0px rgb(81, 81, 81) ;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 10px;
+    color: var(--foreground);
+}
+
+.form {
+    width: 320px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--dark-theme-elem-back);
+    align-self: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 1px var(--dark-theme-shadow);
+    color: var(--foreground);
+}
+.form > button {
+    background-color: #1c1c1c;
+    border: none;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 10px 10px;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+    color: var(--foreground);
+}
+
+.form > button:hover {
+    background-color: #575757;
+}
